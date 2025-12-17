@@ -37,6 +37,7 @@ TIMESTAMP_CMD := TZ="Asia/Bangkok" date "+%Y-%m-%d %H:%M:%S%:::z"
 #    - The "_defaults" folder
 #    - The "_headers" folder
 #    - The root "." folder itself
+
 ALL_DIRS := $(shell find . -type d \( \( -name ".*" ! -name "." \) -o -name "_defaults" -o -name "_headers" \) -prune -o -type d ! -name "." -printf "%P\n")
 # debug print
 # $(info ALL_DIRS is $(ALL_DIRS))
