@@ -1,6 +1,6 @@
 # 1a. Navigate to the specific directory
 # $env:USERNAME dynamically fetches the current user's name
-$targetPath = "C:\Users\$env:USERNAME\Documents\BareMetal-C-Labs"
+$targetPath = "C:\Users\$env:USERNAME\Documents\BareMetal-C"
 
 # Check if directory exists before trying to enter it
 if (Test-Path -Path $targetPath) {
@@ -13,4 +13,4 @@ if (Test-Path -Path $targetPath) {
 
 # 2. Launch Docker
 # We use "${PWD}" to ensure the current path is passed correctly to Docker
-docker run --name baremetal-c --rm -it -v "${PWD}:/labs" kongkrit/baremetal-c
+docker run --name baremetal-c --rm -it -v "${PWD}:/student" kongkrit/baremetal-c

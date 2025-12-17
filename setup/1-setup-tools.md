@@ -18,11 +18,11 @@ the text in the box with **`|`** on the left is the output from the computer (ex
 - We recommend you to use your `Documents` folder:
   - **Windows recommended location:**
     ```
-	C:\Users\NAME\Documents\BareMetal-C-Labs
+	C:\Users\NAME\Documents\BareMetal-C
 	```
   - **macOS recommended location:**
     ```
-	/Users/NAME/Documents/BareMetal-C-Labs
+	/Users/NAME/Documents/BareMetal-C
 	```
 
 ### WSL prepartion (Windows only):
@@ -62,13 +62,14 @@ the text in the box with **`|`** on the left is the output from the computer (ex
 - From **File** menu, click **Clone a repository from the internet** and select **URL**.
 - Clone the following URL:
   ```
-  https://github.com/kongkrit/BareMetal-C-Labs
+  https://github.com/kongkrit/BareMetal-C
   ```
-- Choose **Local path**. For **Windows & macOS**, we recommend your `Documents` folder.
-- Github will try to foce you to use `Documents/GitHub` folder, but you can override it!
-  - **Windows:** use **Local path** `C:\Users\NAME\Documents\BareMetal-C-Labs`
-  - **macOS:** use **Local path** `/Users/NAME/Documents/BareMetal-C-Labs`
-- Click `Clone` and wait for it to finish. Now everything resides in `Documents/BareMetal-C-Labs` folder.
+- Choose **Local path**.
+- For **Windows & macOS:** We *will only support* you if you use `Documents` folder. So, **read carefully:**
+  - *Github Desktop* will try to foce you to use `Documents/GitHub` folder. **Override** it!
+  - **Windows:** MUST use **Local path** `C:\Users\NAME\Documents\BareMetal-C`
+  - **macOS:** MUST use **Local path** `/Users/NAME/Documents/BareMetal-C`
+- Click `Clone` and wait for it to finish. Now everything resides in `Documents/BareMetal-C` folder.
 
 ---
 
@@ -125,21 +126,21 @@ the text in the box with **`|`** on the left is the output from the computer (ex
 Windows and macOS instructions are a bit different here.
 
 ### For Windows:
-- Open **File Explorer** and go to where your project is from GitHub clone above (`Documents/BareMetal-C-Labs`) was recommended.
-- Go into `BareMetal-C-Labs` folder
-- **Shift + Right-click** inside the `BareMetal-C-Labs` folder window, and select `Open PowerShell window here` or `Open in Terminal`
+- Open **File Explorer** and go to where your project is from GitHub clone above (`Documents/BareMetal-C`) was recommended.
+- Go into `BareMetal-C` folder
+- **Shift + Right-click** inside the `BareMetal-C` folder window, and select `Open PowerShell window here` or `Open in Terminal`
 - You now have a terminal with prompt:
   > ```
-  > PS C:\Users\NAME\Documents\BareMetal-C-Labs>
+  > PS C:\Users\NAME\Documents\BareMetal-C>
   > ```
 
 ### For MacOS
-- Use **Finder** and go to where your project is from GitHub clone above. (`Documents/BareMetal-C-Labs`) was recommended.
+- Use **Finder** and go to where your project is from GitHub clone above. (`Documents/BareMetal-C`) was recommended.
 - Type `Command + space` and type `terminal` and you get a terminal window
 - type "`cd `" (`cd` and one space after)
-- drag `BareMetal-C-Labs` folder from **Finder** into terminal. terminal now reads: `cd /Users/NAME/Documents/BareMetal-C-Labs` and hit `enter`. Your prompt will be:
+- drag `BareMetal-C` folder from **Finder** into terminal. terminal now reads: `cd /Users/NAME/Documents/BareMetal-C` and hit `enter`. Your prompt will be:
   > ```
-  > name@computername BareMetal-C-Labs %
+  > name@computername BareMetal-C %
   > ```
 
 ---
@@ -149,8 +150,8 @@ Windows and macOS instructions are a bit different here.
 ### For both Windows and macOS:
 - Make sure `Docker Desktop` is running.
 - Make sure you are at the right folder:
-  - **Windows:** `PS C:\Users\NAME\Documents\BareMetal-C-Labs>`
-  - **macOS:** `name@computername BareMetal-C-Labs %`
+  - **Windows:** `PS C:\Users\NAME\Documents\BareMetal-C>`
+  - **macOS:** `name@computername BareMetal-C %`
 
 - **Generate sdcc header:** copy and paste the command below into the command prompt:
   ```
@@ -257,11 +258,11 @@ Log out of **tool-prompt**. Easy. type `ctrl + d` or type `exit` and you will se
 > [baremetal-c]:/labs/... #
 > exit
 > ```
-and the prompt changes to `PS C:\...` (Windows), or `name@computername BareMetal-C-Labs %` (macOS)
+and the prompt changes to `PS C:\...` (Windows), or `name@computername BareMetal-C %` (macOS)
 
 ---
 
 ## 7. How to get back to the **tool-prompt**:
 - Make sure that `Docker Desktop` is running.
-- Make sure you're in the correct folder (`BareMetal-C-Labs`).
+- Make sure you're in the correct folder (`BareMetal-C`).
 - Repeat steps in section **4. Launching the tool environment** [above](#4-pull-and-launch-the-tool-environment).

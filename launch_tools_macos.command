@@ -2,7 +2,7 @@
 
 # 1b. Navigate to the specific directory
 # $USER dynamically fetches the current user's name
-TARGET_PATH="/Users/$USER/Documents/BareMetal-C-Labs"
+TARGET_PATH="/Users/$USER/Documents/BareMetal-C"
 
 # Check if directory exists before trying to enter it
 if [ -d "$TARGET_PATH" ]; then
@@ -15,4 +15,4 @@ fi
 
 # 2. Launch Docker
 # "${PWD}" ensures the path is handled correctly even if it has spaces
-docker run --name baremetal-c-prompt --rm -it -v "${PWD}:/labs" kongkrit/baremetal-c
+docker run --name baremetal-c-prompt --rm -it -v "${PWD}:/student" kongkrit/baremetal-c
