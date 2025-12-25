@@ -46,10 +46,10 @@ else
 endif
 
 # Sanitize DIR (replace backslashes with forward slashes)
-FIXED_DIR := $(subst \,/,$(RAW_DIR))
+RAW_DIR2 := $(subst \,/,$(RAW_DIR))
 
 # Regex: match /student/code OR (something)/BareMetal-C/code followed by end-of-string ($) or a slash (/)
-MATCH_CHECK := $(shell echo '$(FIXED_DIR)' | grep -E "(^/student/code(/|$$)|/BareMetal-C/code(/|$$))")
+MATCH_CHECK := $(shell echo '$(RAW_DIR2)' | grep -E "(^/student/code(/|$$)|/BareMetal-C/code(/|$$))")
 
 ifeq ($(MATCH_CHECK),)
     $(error [ERROR] Invalid Path Structure! The path must contain '(something)/BareMetal-C/code' OR '^/student/code'. Received: $(FIXED_DIR))
@@ -57,11 +57,12 @@ endif
 
 # Rewrite to /student/code
 # Logic: Map root, keeping subfolders, and strip trailing slash
-FIXED_DIR := $(shell echo '$(FIXED_DIR)' | perl -pe 's|.*/BareMetal-C/code/*|/student/code/|; s|/$$||')
+FIXED_DIR := $(shell echo '$(RAW_DIR2)' | perl -pe 's|.*/BareMetal-C/code/*|/student/code/|; s|/$$||')
 STRIPPED_DIR := $(shell echo '$(FIXED_DIR)' | perl -pe 's#.*(?:/BareMetal-C|/student)/code/?##; s#^/##; s#^/##; s#/*$$##')
 
 # 3. Echo resolved values
-# x $(info RAW_DIR:      $(RAW_DIR))
+# $(info RAW_DIR:      $(RAW_DIR))
+# $(info RAW_DIR2:     $(RAW_DIR2))
 $(info FIXED_DIR:    $(FIXED_DIR))
 $(info STRIPPED_DIR: $(STRIPPED_DIR))
 $(info RECURSE:      $(RECURSE))
