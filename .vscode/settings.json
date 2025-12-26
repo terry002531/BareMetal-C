@@ -1,4 +1,7 @@
 {
+    // temporarily suppress intellisense red squiggles
+    // "C_Cpp.errorSquiggles": "disabled",
+
     // Config Line Endings
     "files.eol": "\n",
     "files.insertFinalNewline": true,
@@ -10,6 +13,13 @@
     },
     "[powershell]": {
         "files.eol": "\r\n"
+    },
+
+    // makefile needs distinction between spaces and tabs
+    "[makefile]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+        "editor.renderWhitespace": "all"
     },
 
     // 2. File Visibility (Student View: Focused)
@@ -27,6 +37,9 @@
         "**/*.ihx": true,
         "code/**/*.bin": true,
         "code/.test": true,
+
+        // test files
+        "code/_instructor/_problem_matcher_tests": true,
 
         // System/Config Files (Hide from students)
         ".gitattributes": true,
