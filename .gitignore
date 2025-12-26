@@ -1,21 +1,23 @@
-# VS Code Local Caches
+# IDE & EDITOR CONFIG
+# ===================
+# VS Code internal caches (keep settings.json, tasks.json, etc.)
 .vscode/browse.vc.db
 .vscode/ipch/
 
-# annoying debugger
+# Optional: annoying local debug
 .vscode/launch.json
 
 # Extracted SDCC Headers
 .vscode/sdcc-include/
 
 # Backup artifacts
-code/**/*.bak
+# ================
+*.bak
 
-# Build artifacts by compiler/assembler (in src/ and all subfolders)
+# Build artifacts by compiler/assembler (in code/ and all subfolders)
+# ==================================================================
 code/**/*.stamp
 code/**/*.asm
-code/**/*.bin
-code/**/*.ihx
 code/**/*.lk
 code/**/*.lst
 code/**/*.map
@@ -25,32 +27,43 @@ code/**/*.rst
 code/**/*.sym
 code/**/*.txs
 
+code/**/*.bin
+code/**/*.ihx
+
+# Copied Binary from code
 sim/**/*.bin
 
+# OS GARBAGE (Mac/Windows/Linux)
+# ==============================
 # macOS
-**/.DS_Store
 .DS_Store
-**/.AppleDouble
-**/.LSOverride
-**/Icon?
-**/._*
-
-# macOS Finder metadata
-**/.Spotlight-V100
-**/.Trashes
-**/.fseventsd
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
 
 # Windows
-**/Thumbs.db
-**/Thumbs.db:encryptable
-**/Desktop.ini
-**/$RECYCLE.BIN/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
 
-# Office temp files
-**/~$*.docx
-**/~$*.doc
-**/~$*.pptx
-**/~$*.ppt
-**/~$*.xlsx
-**/~$*.xls
-**/~$*.tmp
+# Linux
+.tscache
+
+# Docker temp files
+# =================
+docker-images/*/_shared.*
+docker-images/*/_temp.*
+
+# Global Node Ignores
+# ===================
+**/node_modules/
+**/npm-debug.log
+
+# OFFICE GHOST FILES (Temporary Locks)
+# ====================================
+~$*
