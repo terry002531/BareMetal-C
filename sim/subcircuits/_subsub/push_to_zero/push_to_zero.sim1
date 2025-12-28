@@ -1,0 +1,31 @@
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Package" CircId="Package-153" mainComp="false" Show_id="true" Show_Val="false" Pos="-316,-132" rotation="0" hflip="1" vflip="1" label="Package-153" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="-1e+06,-1e+06" circPos="0,0" boardRot="-1e+06" circRot="0" boardHflip="1" boardVflip="1" SubcType="Board" Width="2" Height="2" Name="pts" Package_File="push_to_zero.package" Logic_Symbol="true" />
+
+<item itemtype="Push" CircId="Push-144" mainComp="true" Show_id="false" Show_Val="false" Pos="-380,-28" rotation="0" hflip="1" vflip="1" label="Push-144" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="8,-4" circPos="-380,-28" boardRot="0" circRot="0" boardHflip="1" boardVflip="1" Norm_Close="false" Poles="1" />
+
+<item itemtype="Rail" CircId="Rail-145" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="-356,-100" rotation="90" hflip="1" vflip="1" label="Rail-145" idLabPos="-5,-10" labelrot="-90" valLabPos="-12,6" valLabRot="-90" boardPos="-40,32" circPos="-356,-100" boardRot="90" circRot="90" boardHflip="1" boardVflip="1" Voltage="5 V" />
+
+<item itemtype="Resistor" CircId="Resistor-146" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-356,-60" rotation="90" hflip="1" vflip="1" label="Resistor-146" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" boardPos="-40,72" circPos="-356,-60" boardRot="90" circRot="90" boardHflip="1" boardVflip="1" Resistance="3.3 kΩ" />
+
+<item itemtype="Buffer" CircId="Buffer-147" mainComp="false" Show_id="false" Show_Val="false" Pos="-332,-28" rotation="0" hflip="1" vflip="1" label="Buffer-147" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="-16,104" circPos="-332,-28" boardRot="0" circRot="0" boardHflip="1" boardVflip="1" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1000 MΩ" Invert_Inputs="false" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="4 Ω" initHigh="false" Inverted="false" Open_Collector="false" Tristate="false" Tpd_ps="10 ps" Tr_ps="3 ps" Tf_ps="4 ps" />
+
+<item itemtype="Ground" CircId="Ground-149" mainComp="false" Show_id="false" Show_Val="false" Pos="-412,-4" rotation="0" hflip="1" vflip="1" label="Ground-149" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="-96,128" circPos="-412,-4" boardRot="0" circRot="0" boardHflip="1" boardVflip="1" />
+
+<item itemtype="Tunnel" CircId="Tunnel-151" mainComp="false" Show_id="false" Show_Val="false" Pos="-308,-28" rotation="0" hflip="-1" vflip="1" label="Tunnel-151" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="8,104" circPos="-308,-28" boardRot="0" circRot="0" boardHflip="-1" boardVflip="1" Name="OUT" IsBus="false" />
+
+<item itemtype="Node" CircId="Node-148" mainComp="false" boardPos="-1e+06,-1e+06" circPos="0,0" boardRot="-1e+06" circRot="0" boardHflip="1" boardVflip="1" Pos="-356,-28" />
+
+<item itemtype="Connector" uid="Connector-339" startpinid="Resistor-146-lPin" endpinid="Rail-145-outnod" pointList="-356,-76,-356,-84" />
+
+<item itemtype="Connector" uid="Connector-342" startpinid="Resistor-146-rPin" endpinid="Node-148-1" pointList="-356,-44,-356,-28" />
+
+<item itemtype="Connector" uid="Connector-343" startpinid="Push-144-switch0pinN" endpinid="Node-148-0" pointList="-364,-28,-356,-28" />
+
+<item itemtype="Connector" uid="Connector-344" startpinid="Node-148-2" endpinid="Buffer-147-in0" pointList="-356,-28,-348,-28" />
+
+<item itemtype="Connector" uid="Connector-345" startpinid="Push-144-pinP0" endpinid="Ground-149-Gnd" pointList="-396,-28,-412,-28,-412,-20" />
+
+<item itemtype="Connector" uid="Connector-346" startpinid="Buffer-147-out" endpinid="Tunnel-151-pin" pointList="-316,-28,-308,-28" />
+
+</circuit>

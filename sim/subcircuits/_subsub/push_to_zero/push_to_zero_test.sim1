@@ -1,0 +1,23 @@
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Subcircuit" CircId="push_to_zero-1" mainComp="false" Show_id="true" Show_Val="false" Pos="-412,-28" rotation="0" hflip="1" vflip="1" label="push_to_zero-1" idLabPos="-19.6838,-18.1494" labelrot="0" valLabPos="-16,20" valLabRot="0">
+<mainCompProps MainCompId="Push-144" Norm_Close="false" Poles="1" />
+</item>
+
+<item itemtype="Led" CircId="Led-2" mainComp="false" Show_id="false" Show_Val="false" Pos="-284,-20" rotation="0" hflip="1" vflip="1" label="Led-2" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" Grounded="false" Threshold="2.4 V" MaxCurrent="2.6 mA" Resistance="0.6 Ω" />
+
+<item itemtype="Resistor" CircId="Resistor-3" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-364,-20" rotation="0" hflip="1" vflip="1" label="Resistor-3" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="1 kΩ" />
+
+<item itemtype="Ground" CircId="Ground-4" mainComp="false" Show_id="false" Show_Val="false" Pos="-260,4" rotation="0" hflip="1" vflip="1" label="Ground-4" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Amperimeter" CircId="Amperimeter-5" mainComp="false" Show_id="false" Show_Val="false" Pos="-324,-36" rotation="0" hflip="1" vflip="1" label="Amperimeter-5" idLabPos="-24,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Connector" uid="Connector-1" startpinid="push_to_zero-1-OUT" endpinid="Resistor-3-lPin" pointList="-388,-20,-380,-20" />
+
+<item itemtype="Connector" uid="Connector-3" startpinid="Led-2-rPin" endpinid="Ground-4-Gnd" pointList="-268,-20,-260,-20,-260,-12" />
+
+<item itemtype="Connector" uid="Connector-4" startpinid="Resistor-3-rPin" endpinid="Amperimeter-5-lPin" pointList="-348,-20,-332,-20" />
+
+<item itemtype="Connector" uid="Connector-5" startpinid="Amperimeter-5-rPin" endpinid="Led-2-lPin" pointList="-316,-20,-300,-20" />
+
+</circuit>

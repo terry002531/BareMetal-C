@@ -11,6 +11,7 @@
 
     <itemset category="BMC Subblocks" type="Subcircuit" folder="_subsub">
 
+		<item name="push_to_zero" package="push_to_zero" data="push_to_zero"></item>
 		<item name="test_toggle" package="test_toggle" data="test_toggle"></item>
 		<item name="out_led_d0" package="out_led_d0" data="out_led_d0"></item>
 		<item name="out_led_d0_old" package="out_led_d0_old" data="out_led_d0_old"></item>	
