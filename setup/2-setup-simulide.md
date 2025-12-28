@@ -66,6 +66,23 @@
  
 ---
 
-## 3. Set up Visual Studio Code (VS Code)
+# 3. Test that subcircuit is set correctly
+
+- Run `simulide` and click `Open Circuit`
+  
+  ![open circuit](./pix/4-open-circuit.png)
+
+- Choose `Documents/BareMetal-C/sim/05_freq_8MHz.sim1`
+- The following picture should show up. *Note the area in red rectangle.*
+
+  ![full circuit](./pix/4-full-circuit.png)
+
+## Troubleshooting:
+
+The cause for missing circuit in the red rectangle above is not setting `User Data Folder` (subcircuits) correctly. Go back to [the previous section](#2-set-class-subcircuits) and fix it.
+
+---
+
+## 4. Set up Visual Studio Code (VS Code)
 
 Goto [set up VS Code](./3-setup-vs-code.md).
