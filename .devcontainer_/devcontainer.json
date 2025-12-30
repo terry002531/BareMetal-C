@@ -1,0 +1,75 @@
+{
+    "name": "BareMetal C Student",
+    "image": "ghcr.io/kongkrit/baremetal-c",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools"
+            ],
+            "settings": {
+
+                // --- 1. Distraction-Free UI ---
+                "extensions.ignoreRecommendations": true,
+                "workbench.tips.enabled": false,
+                "workbench.startupEditor": "none",
+                
+                "files.eol": "\n",
+                // Configure IntelliSense for SDCC automatically
+                "C_Cpp.default.compilerPath": "/usr/bin/sdcc",
+                "C_Cpp.default.cStandard": "c99",
+                "C_Cpp.default.intelliSenseMode": "clang-x86",
+                "C_Cpp.default.includePath": [
+                    "${workspaceFolder}/**",
+                    "/workspaces/BareMetal-C/**",
+                    "/usr/share/sdcc/include"
+                ],
+                "C_Cpp.default.defines": [
+                    "__SDCC",
+                    "__SDCC_z80",
+                    "__naked=",
+                    "__critical=",
+                    "__interrupt=",
+                    "__at(x)=",
+                    "__asm__(x)="
+                ],
+
+                "files.exclude": {
+
+                    // Hiding Configs (students)
+                    ".devcontainer": true,
+                    ".gitattributes": true,
+                    ".gitignore": true,
+                    ".vscode": true,
+                    "_vscode-extensions": true,
+                    "student.code-workspace": true,
+                    "student.code-workspace_": true,
+                        
+                    // Hiding Complexity (students)
+                    "**/makefile": true,
+                    "**/Makefile": true,
+                    "**/*.bat": true,
+                    "**/*.command": true,
+                    "**/*.sh": true,
+                    "**/*.ps1": true,
+                    "**/LICENSE": true,
+                    "**/*.md": true,
+                    "docs-*": true,
+                    "setup": true,
+                    "sim": true,
+                    "**/*.s": true,
+                        
+                    // Hiding _defaults & _headers Files (students)
+                    "code/_defaults": true,
+                    "code/_headers": true,
+                        
+                    // dummy file to let above section end with comma
+                    "IfYourFileNameIsThisYouDeserveIt_-_-_-": true
+                },
+                "search.exclude": {
+                    "**/*.md": true
+                }
+            }
+        }
+    },
+    "remoteUser": "root"
+}
