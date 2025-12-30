@@ -76,11 +76,10 @@ Now that you have created a new user:
 - Download GitHub desktop from [GitHub desktop page](https://desktop.github.com/download/).
 - Run it. You don't need to sign up, but you need to provide an email address and name. It's best that you *do not share the same email address* with friends. It can cause problems later.
 - From **File** menu, click **Clone a repository from the internet** and select **URL**.
-- Clone the following URL:
+- Before cloning the following URL:
   ```
   https://github.com/kongkrit/BareMetal-C
   ```
-- Choose **Local path**.
 - For **Windows & macOS:** Use `Documents` folder. **Read carefully:**
   - *GitHub Desktop* will try to foce you to use `Documents/GitHub` folder. **Override** it!
   - **Windows:** Use *local path* `C:\Users\NAME\Documents\BareMetal-C`
