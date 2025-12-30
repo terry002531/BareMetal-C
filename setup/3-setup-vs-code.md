@@ -98,7 +98,7 @@ Before setting up VS Code, ensure the tools (which includes *GitHub Desktop* and
 
    ![right click code](./pix/3-code-07.4.png)
 
-2. A context menu opens up, choose `Build BareMetal-C All (Recursive)`
+2. A context menu opens up, choose `Build BareMetal-C Projects (All)`
 
    ![build all](./pix/3-code-07.5.png)
 
@@ -108,7 +108,7 @@ Before setting up VS Code, ensure the tools (which includes *GitHub Desktop* and
 
    **If you got this far, your installation is successful.**
 
-3. Let's try clean up. Right click on folder `code` again, but this time, choose `Clean BareMetal-C All (Recursive)` and you should see `terminal` with the text `(TIME) -------- clean successful --------`
+3. Let's try clean up. Right click on folder `code` again, but this time, choose `Clean BareMetal-C Projects (All)` and you should see `terminal` with the text `(TIME) -------- clean successful --------`
 
    ![clean successful](./pix/3-code-07.7.png)
 
