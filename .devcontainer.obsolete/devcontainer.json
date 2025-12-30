@@ -2,6 +2,9 @@
     "name": "BareMetal C Student",
     "image": "ghcr.io/kongkrit/baremetal-c",
 
+    // Force copy headers on creation - used by c_cpp_properties.json
+    "postCreateCommand": "mkdir -p .vscode/sdcc-include && cp -rn /usr/share/sdcc/include/* .vscode/sdcc-include/",
+
     "workspaceMount": "source=${localWorkspaceFolder},target=/BareMetal-C,type=bind",
     "workspaceFolder": "/BareMetal-C",
 
