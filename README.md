@@ -1,5 +1,13 @@
 # BareMetal-C
 
+> [!IMPORTANT]  
+> **🔴 STOP! DO NOT EDIT FILES LOCALLY.**
+>
+> You are currently in a generic text editing mode. The Z80 compiler (SDCC), Build Tools (Make), and Autocomplete are **NOT** loaded.
+>
+> 👇 **YOU MUST CLICK THIS LINK TO START:** 👇  
+> # [🚀 LAUNCH COURSE ENVIRONMENT](command:remote-containers.reopenInContainer)
+
 Writing C directly to the hardware!
 - **URL:** <https://github.com/kongkrit/BareMetal-C>
 - **Purpose:** Repository for teaching/learning `BareMetal-C`
