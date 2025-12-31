@@ -6,22 +6,27 @@
         }
     ],
     "settings": {
+                
         // --- Distraction-Free UI ---
         "extensions.ignoreRecommendations": true,
         "workbench.tips.enabled": false,
         "workbench.startupEditor": "none",
 
+        "files.eol": "\n",
+
+        // --- Hiding Complexity ---
         "files.exclude": {
 
-            // Hiding Configs (students)
+            // Configs
             ".devcontainer*": true,
-            ".gitattributes": true,
-            ".gitignore": true,
-            ".vscode": true,
+            "**/.git": true,
+                    "**/.gitattributes": true,
+                    "**/.gitignore": true,
+                    "**/.vscode": true,
             "_vscode-extensions": true,
             "student.code-workspace*": true,
             
-            // Hiding Complexity (students)
+            // Build, Scripts, LICENSE, md, docs, sim, setup
             "**/makefile": true,
             "**/Makefile": true,
             "**/*.bat": true,
@@ -33,13 +38,17 @@
             "docs-*": true,
             "setup": true,
             "sim": true,
+
+            // non-C source code
             "**/*.s": true,
+            "**/*/rel_": true,
+            "**/*/lst_": true,
             
-            // Hiding _defaults & _headers Files (students)
+            // Internal Folders
             "code/_defaults": true,
             "code/_headers": true,
 
-            // dummy file to let above section end with comma
+            // Dummy ender
             "IfYourFileNameIsThisYouDeserveIt_-_-_-": true
         },
         "search.exclude": {
