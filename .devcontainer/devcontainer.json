@@ -1,0 +1,46 @@
+{
+    "name": "BareMetal C Student",
+    "image": "ghcr.io/kongkrit/baremetal-c",
+
+    "workspaceMount": "source=${localWorkspaceFolder},target=/BareMetal-C,type=bind",
+    "workspaceFolder": "/BareMetal-C",
+
+    // Force copy headers on creation - used by c_cpp_properties.json
+    // .vscode name is safe because the it is relative to "workspaceFolder"
+    "postCreateCommand": "if [ ! -d .vscode/sdcc-include ]; then mkdir -p .vscode/sdcc-include && cp -r /usr/share/sdcc/include/* .vscode/sdcc-include/; fi",
+
+    // So we can find out whether we're inside our container
+    "containerEnv": {
+        "IS_BAREMETAL_C_CONTAINER": "true"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "/${containerWorkspaceFolder}/_vscode-extensions/baremetal-c-builder.vsix"
+            ],
+            
+            "settings": {
+                
+                // --- Distraction-Free UI ---
+                "extensions.ignoreRecommendations": true,
+                "workbench.tips.enabled": false,
+                "workbench.startupEditor": "none",
+                
+                "files.eol": "\n",
+
+                // --- Hiding Complexity ---
+                "files.exclude": {
+                        
+                    // Dummy ender
+                    "IfYourFileNameIsThisYouDeserveIt_-_-_-": true
+                },
+                "search.exclude": {
+                }
+            }
+        }
+    },
+    
+    "remoteUser": "root"
+}
