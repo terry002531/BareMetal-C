@@ -17,10 +17,12 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-vscode.cpptools"
+                "ms-vscode.cpptools",
+                "../_vscode-extensions/baremetal-c-builder-latest.vsix"
             ],
+            
             "settings": {
-
+                
                 // --- Distraction-Free UI ---
                 "extensions.ignoreRecommendations": true,
                 "workbench.tips.enabled": false,
@@ -28,35 +30,19 @@
                 
                 "files.eol": "\n",
 
-                // Configure IntelliSense for SDCC automatically
-                "C_Cpp.default.compilerPath": "/usr/bin/sdcc",
-                "C_Cpp.default.cStandard": "c99",
-                "C_Cpp.default.intelliSenseMode": "clang-x86",
-                "C_Cpp.default.includePath": [
-                    "${workspaceFolder}/code/_headers", // user headers reside in /BareMetal-C/code/_headers
-                    "/usr/share/sdcc/include"
-                ],
-                "C_Cpp.default.defines": [
-                    "__SDCC",
-                    "__SDCC_z80",
-                    "__naked=",
-                    "__critical=",
-                    "__interrupt=",
-                    "__at(x)=",
-                    "__asm__(x)="
-                ],
-
+                // --- Hiding Complexity ---
                 "files.exclude": {
 
-                    // Hiding Configs (students)
+                    // Configs
                     ".devcontainer*": true,
-                    ".gitattributes": true,
-                    ".gitignore": true,
-                    ".vscode": true,
+                    "**/.git": true,
+                    "**/.gitattributes": true,
+                    "**/.gitignore": true,
+                    "**/.vscode": true,
                     "_vscode-extensions": true,
                     "student.code-workspace*": true,
 
-                    // Hiding Complexity (students)
+                    // Build, Scripts, LICENSE, md, docs, sim, setup
                     "**/makefile": true,
                     "**/Makefile": true,
                     "**/*.bat": true,
@@ -68,13 +54,17 @@
                     "docs-*": true,
                     "setup": true,
                     "sim": true,
-                    "**/*.s": true,
 
-                    // Hiding _defaults & _headers Files (students)
+                    // non-C source code
+                    "**/*.s": true,
+                    "**/*/rel_": true,
+                    "**/*/lst_": true,
+
+                    // Internal Folders
                     "code/_defaults": true,
                     "code/_headers": true,
                         
-                    // dummy file to let above section end with comma
+                    // Dummy ender
                     "IfYourFileNameIsThisYouDeserveIt_-_-_-": true
                 },
                 "search.exclude": {
@@ -82,5 +72,6 @@
             }
         }
     },
+    
     "remoteUser": "root"
 }
