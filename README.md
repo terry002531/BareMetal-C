@@ -19,6 +19,10 @@ You need to follow *all the steps* from 1-4 to have a working environment for th
 
 ---
 
+- [x] 5. Reset Docker and VS Code to original state. Click [here](./setup/5-reset-system.md)
+
+---
+
 ## Reference Documents
 
 These are the reference documents for the class:
