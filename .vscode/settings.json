@@ -1,8 +1,4 @@
 {
-    "devContainers.repositoryConfigurationPaths": [ "." ],
-    "devContainers.fallbackInsecureGateway": true,
-    "devContainers.openInContainerMethod": "always",
-
     "git.enabled": false,
     "git.autofetch": false,
 
