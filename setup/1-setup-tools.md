@@ -3,14 +3,16 @@
 ## 0. Conventions, guidelines, and WSL preparation
 ### Conventions:
 This is what you should type or copy & paste into computer (example):
+
 ```
-type, paste, or take action. 
+type, copy & paste, or take action. 
 ```
+
 and if you see a vertical line **`|`** to the left of a box,
 the text in the box with **`|`** on the left is the output from the computer (example):
-> ```
-> I am the output from the computer
-> ```
+
+> `I am the output from the computer`
+
 - **Windows:** contains specific Windows only information.
 - **macOS:** contains specific macOS only information.
 
@@ -31,40 +33,45 @@ Now that you have created a new user:
 - Choose the folders we recommend; their full path name has no `space`.
 - We will support you *only if* you use `Documents` folder:
   - **Windows location:**
-    > ```
-	> C:\Users\NAME\Documents\BareMetal-C
-	> ```
+
+    > `C:\Users\NAME\Documents\BareMetal-C`
+
   - **macOS location:**
-    > ```
-	> /Users/NAME/Documents/BareMetal-C
-	> ```
+
+    > /Users/NAME/Documents/BareMetal-C
 
 ---
 
 ### WSL prepartion (Windows only):
   Click `Windows start button` and type:
+
   ```
   turn windows features on or off
   ```
+  
   Run it. Scroll down and check ✔
-  ```
-  ☑ Windows Subsystem for Linux
-  ```
+
+  `☑ Windows Subsystem for Linux`
+
   and click OK.
 
   Reboot if necessary.
 
   **Check your current WSL version:**
   - Type `Win+R` and run `cmd` or `powershell` and type:
+
     ```
     wsl --version
     ```
+  
   - If it says `WSL version: 2.x.x`, you're ok.
     
     But if it is `1.x.x`, you must update `WSL` to `WSL2` by:
+  
     ```
     wsl --update
     ```
+  
     Reboot.
 
     After reboot, do `wsl --version` again to check that you are on `WSL version: 2.x.x`.
@@ -74,15 +81,23 @@ Now that you have created a new user:
 ## 1. (Windows & macOS) Install GitHub Desktop
 
 - Download GitHub desktop from [GitHub desktop page](https://desktop.github.com/download/).
+
 - Run it. You don't need to sign up, but you need to provide an email address and name. It's best that you *do not share the same email address* with friends. It can cause problems later.
+
 - From **File** menu, click **Clone a repository from the internet** and select **URL**.
+
 - Before cloning the following URL:
+
   ```
   https://github.com/kongkrit/BareMetal-C
   ```
+
 - For **Windows & macOS:** Use `Documents` folder. **Read carefully:**
+
   - *GitHub Desktop* will try to foce you to use `Documents/GitHub` folder. **Override** it!
+
   - **Windows:** Use *local path* `C:\Users\NAME\Documents\BareMetal-C`
+
   - **macOS:** Use *local path* `/Users/NAME/Documents/BareMetal-C`
 
   The screenshot below is for username `dev`:
@@ -96,13 +111,17 @@ Now that you have created a new user:
 ## 2. (Windows & macOS) Install Docker Desktop 
 
 - Make sure you have *admin rights* on your computer. That is, you can install new programs for all users, etc.
+
 - Make sure you don't have anything important running. `Docker Desktop` may force you to log out to complete the installation.
+
 - Download `Docker Desktop` from [Docker](https://www.docker.com/products/docker-desktop/).
 
   Click *Download Docker Destop* and choose the drop down that matches your computer's CPU:
 
   - **Windows:** Choose `Windows AMD64`
+
   - **macOS with M-series chip** (starting in late 2020): `Mac - Apple Silicon`
+
   - **Older macOS with Intel CPU** (before late 2020): `Mac - Intel Chip`
 
 - Install `Docker Desktop` and `Accept` Docker Subscription Service Agreement. It's free for personal use.
@@ -110,6 +129,7 @@ Now that you have created a new user:
 ---
 
   ### For Windows:
+
   - Make sure the following box is **checked ✔. We will use `WSL2`**:
 
     > `☑ Use WSL 2 instead of Hyper-V`
@@ -119,25 +139,36 @@ Now that you have created a new user:
     > `☐ Allow Windows Containers to be used with this installation`
 
   - `Add shortcut to desktop` choice is totally up to you.
+
   - **Afer installation, it will force you to log out.** Just log back in.
+
   - You can skip all the questions
 
 ---
 
   ### For macOS:
   - Drag and drop `Docker` into your `Applications` folder
+
   - Run `Docker` and select `Use recommended settings`
+
   - You can skip all the questions
+
   - Accept all the permissions
+
   - Wait for the docker icon (a whale with containers on top) on menu bar to stop dancing.
 
 ---
 
   ### For both Windows / macOS:
+
   - `Accept` Docker Subscription Service Agreement. It's free for personal use.
+  
   - Select `Personal`, not `Work`, and you can skip giving out your email address.
+  
   - You're free to `Skip` answering all other questions as well.
+  
   - **Make sure you get to the `Docker Desktop` main window.** It should have tabs on the left side, like: `Containers`, `Images`, `Volumes`, etc.
+  
   - **Automatically start `Docker Desktop`** every time you start your computer:
 
     ![docker desktop](./pix/1-docker-desktop.png)
@@ -148,7 +179,9 @@ Now that you have created a new user:
     > ☑ Start Docker Desktop when you sign in to your computer
     > ☐ Open Docker Dashboard when Docker Destop starts
     > ```
+
   - Click `Apply` on the bottom right to save settings.
+  
   - You can close `Docker Desktop` main window now.
 
 ---
@@ -257,6 +290,7 @@ make DIR='_test_setup' RECURSE=0
 ```
 
 and it should say (not exactly, but very similar):
+
 > ```
 >   ...
 >   NON_HANDLER_OBJ - _test_setup/blinking_running_led.rel
@@ -284,6 +318,7 @@ make clean DIR='_test_setup'
 ```
 
 and it should say:
+
 >  ```
 >     ...
 >  >> Cleaning artifacts in code folders (recursive)...
@@ -309,8 +344,11 @@ and the prompt changes to `PS C:\...` (Windows), or `name@computername BareMetal
 ---
 
 ## 8. How to get back to the **tool-prompt**:
+
 - Make sure that `Docker Desktop` is running.
+
 - Make sure you're in the correct folder (`BareMetal-C`).
+
 - Repeat steps in section [*5. Try tool command line*](#5-try-tool-command-line) above.
 
 ---
