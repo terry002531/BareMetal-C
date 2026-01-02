@@ -50,23 +50,15 @@ Before setting up VS Code, ensure the tools (which includes *GitHub Desktop* and
 
     Click `Install` to install *recommended extensions*.
 
-    Wait a little while longer. It will ask you to reopen in container:
+    Wait a little while longer. It will ask you to trust my extension.
 
-    ![reopen](./pix/3-reopen.png)
-
-    Click `Reopen in Container`.
-
-    It will show that it is `ⓘ Connecting to Dev Container`. Just wait.
-
-    Until this screen appears:
-
-    ![in container](./pix/3-in-container.png)
+    ![trust extension](./pix/3-trust-extension.png)
 
     The blue bar on the bottom left indicates that it is working correctly.
 
 5.  If things work correctly, you will see:
 
-    ![check](./pix/3-check.png)
+    ![check](./pix/3-space-name.png)
 
     If it doesn't look like the screenshot above, click `Explorer` Icon (1).
     
@@ -74,9 +66,13 @@ Before setting up VS Code, ensure the tools (which includes *GitHub Desktop* and
 
     `✅ BareMetal-C 🤖`
 
-    and the blue `Dev Container` bar on the bottom left (3).
-
     If it does not look like the above, close `VS Code` and re-open it and see the steps that you may be missing.
+
+6.  Check extension:
+
+    Clieck `Extensions` button (1), and you should see the extension installed. (2)
+
+    ![check extension](./pix/3-check-extension.png)
 
 **Double clicking `student.code-workspace` is the way we start `VS Code` for this class.**
 
@@ -88,7 +84,7 @@ Before setting up VS Code, ensure the tools (which includes *GitHub Desktop* and
 
    ![right click code](./pix/3-right-click-code.png)
 
-2. A context menu opens up, choose `Build BareMetal-C Projects (All)`
+2. A context menu opens up, choose `BareMetal-C` and `Build BareMetal-C Projects (All)`
 
    ![build all](./pix/3-build-all.png)
 
@@ -98,7 +94,7 @@ Before setting up VS Code, ensure the tools (which includes *GitHub Desktop* and
 
    **If you got this far, your installation is successful.**
 
-3. Let's try clean up. Right click on folder `code` again, but this time, choose `Clean BareMetal-C Projects (All)` and you should see `terminal` with the text `(TIME) -------- clean successful --------`
+3. Let's try clean up. Right click on folder `code` again, but this time, choose `BareMetal-C` and `Clean BareMetal-C Projects (All)` and you should see `terminal` with the text `(TIME) -------- clean successful --------`
 
    ![cleaned](./pix/3-cleaned.png)
 
