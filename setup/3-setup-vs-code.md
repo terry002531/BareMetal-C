@@ -60,7 +60,7 @@ Before setting up VS Code, ensure the tools (which includes *GitHub Desktop* and
 
     ![choose profile](./pix/3-choose-profile.png)
 
-5.  Click `File` and `Open Workspace from File...` 
+5.  Check the gear on the bottom left, it will have some characters on it (1). Click `File` and `Open Workspace from File...` 
 
     ![open workspace](./pix/3-open-workspace.png)
 
