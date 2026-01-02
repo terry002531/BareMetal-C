@@ -1,6 +1,9 @@
 {
     "recommendations": [
         "ms-vscode.cpptools",
+        "baremetal-c-dev.baremetal-c-builder"
+    ],
+    "unwantedRecommendations": [
         "ms-vscode-remote.remote-containers"
     ]
 }
