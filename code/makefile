@@ -13,6 +13,7 @@
 # -----------------------------------------------------------------------------
 SDAS      := sdasz80
 SDCC      := sdcc
+SDAR      := sdar
 SDOBJCOPY := sdobjcopy
 Z80DASM   := z80dasm
 
@@ -30,6 +31,11 @@ CP   := cp
 TIMESTAMP_CMD := env TZ="Asia/Bangkok" date "+%Y-%m-%d %H_%M_%S %z"
 
 CODE_DIR := /BareMetal-C/code
+
+# List of folders to ignore (space separated, relative to BareMetal-C/code/)
+# e.g. EXCLUDED_DIRS := _instructor/_problem_matcher_tests folder_b folder_c
+EXCLUDED_DIRS := _instructor/_problem_matcher_tests .obsolete
+
 # -----------------------------------------------------------------------------
 # Argument Processing
 # -----------------------------------------------------------------------------
@@ -62,10 +68,11 @@ STRIPPED_DIR := $(shell echo '$(FIXED_DIR)' | perl -pe 's#.*(?:/BareMetal-C|/Bar
 
 # 3. Echo resolved values
 # $(info RAW_DIR      = $(RAW_DIR))
-$(info RAW_DIR2     = $(RAW_DIR2))
+# $(info RAW_DIR2     = $(RAW_DIR2))
 $(info FIXED_DIR    = $(FIXED_DIR))
 $(info STRIPPED_DIR = $(STRIPPED_DIR))
-$(info RECURSE=     = $(RECURSE))
+$(info RECURSE      = $(RECURSE))
+$(info EXLUDED_DIRS = $(EXCLUDED_DIRS))
 
 # -----------------------------------------------------------------------------
 # Discovery & Target Selection
@@ -80,13 +87,17 @@ ifeq ($(STRIPPED_DIR),)
     
     # If RECURSE=1, find all sub-projects (p1, p2...), excluding Root (.)
     else
+        # Generate prune flags from EXCLUDED_DIRS: turns "foo bar" into '-o -path "./foo" -o -path "./bar"'
+        EXCLUDED_FLAGS := $(foreach dir,$(EXCLUDED_DIRS),-o -path "./$(dir)")
+
         # 1. Find ALL directories recursively, ignoring:
         #    - Any folder starting with "." (like .git, .vscode)
         #    - "_defaults" folder
         #    - "_headers" folder
+        #    - "_library" folder
         #    - root "." folder itself
         #    - path "./_instructor/_problem_matcher_tests"
-        ALL_DIRS := $(shell find . -type d \( \( -name ".*" ! -name "." \) -o -name "_defaults" -o -name "_headers" -o -path "./_instructor/_problem_matcher_tests" \) -prune -o -type d ! -name "." -printf "%P\n")
+        ALL_DIRS := $(shell find . -type d \( \( -name ".*" ! -name "." \) -o -name "_defaults" -o -name "_headers" -o -name "_library" $(EXCLUDED_FLAGS) \) -prune -o -type d ! -name "." -printf "%P\n")
     endif
 
 # CASE 2: Specific Target Context (DIR was .../BareMetal-C/code/bar)
@@ -104,11 +115,13 @@ else
 endif
 
 # Debug Output
-$(info --------------------------------)
+# $(info --------------------------------)
+$(info )
 $(info MODE     - RECURSE=$(RECURSE))
 $(info TARGET   - $(if $(STRIPPED_DIR),$(STRIPPED_DIR),Root))
 $(info BUILDING - $(ALL_DIRS))
-$(info --------------------------------)
+# $(info )
+# $(info --------------------------------)
 
 # -----------------------------------------------------------------------------
 # Target: "all"
@@ -127,6 +140,25 @@ _defaults/%.rel: _defaults/%.s
 _defaults/%.rel: _defaults/%.c
 	@echo ">> Rebuilding Default C: $<"
 	$(SDCC) $(CFLAGS) -c $< -o $@
+	@echo ""
+
+# -----------------------------------------------------------------------------
+# Library Rules (For _library folder)
+# -----------------------------------------------------------------------------
+LIB_NAME    := baremetal.lib
+LIB_DIR     := _library
+LIB_SRCS    := $(wildcard $(LIB_DIR)/*.c)
+LIB_OBJS    := $(patsubst %.c, %.rel, $(LIB_SRCS))
+LIB_TARGET  := $(LIB_DIR)/$(LIB_NAME)
+
+$(LIB_DIR)/%.rel: $(LIB_DIR)/%.c
+	@echo ">> Compiling Library Object: $<"
+	$(SDCC) $(CFLAGS) $(COPTFLAGS) -c $< -o $@
+
+$(LIB_TARGET): $(LIB_OBJS)
+	@echo ">> Archiving Library: $@"
+	@$(RM) $@
+	sdar -rc $@ $(LIB_OBJS)
 	@echo ""
 
 # -----------------------------------------------------------------------------
@@ -220,17 +252,18 @@ else
     else
         $(1)_MEMMAP := _defaults/memmap.ld
     endif
-    
+
     # 8. Linker Rule
-    $(1)/$(notdir $(1)).ihx: $$($(1)_STARTUP_OBJ) $$($(1)_HANDLER_OBJ) $$($(1)_NON_HANDLER_OBJ) $$($(1)_MEMMAP)
+    $(1)/$(notdir $(1)).ihx: $$($(1)_STARTUP_OBJ) $$($(1)_HANDLER_OBJ) $$($(1)_NON_HANDLER_OBJ) $$($(1)_MEMMAP) $(LIB_TARGET)
 		@echo ""
 		@echo "  NON_HANDLER_OBJ - $$($(1)_NON_HANDLER_OBJ)"
 		@echo "  HANDLER_OBJ     - $$($(1)_HANDLER_OBJ)"
 		@echo "  STARTUP_OBJ     - $$($(1)_STARTUP_OBJ)"
 		@echo "  MEMMAP          - $$($(1)_MEMMAP)"
+		@echo "  LIBRARY         - $(LIB_TARGET)"
 		@$(GREP) "^\s*-[A-Za-z]" $$($(1)_MEMMAP) || true
 		@echo ""
-		$(SDCC) $(LDFLAGS) $$($(1)_STARTUP_OBJ) $$($(1)_HANDLER_OBJ) $$($(1)_NON_HANDLER_OBJ) -Wl-u -Wl-f,$$($(1)_MEMMAP) -o $$@
+		$(SDCC) $(LDFLAGS) $$($(1)_STARTUP_OBJ) $$($(1)_HANDLER_OBJ) $$($(1)_NON_HANDLER_OBJ) $(LIB_TARGET) -Wl-u -Wl-f,$$($(1)_MEMMAP) -o $$@
 
     # 9. Binary/Disassembly Rule
     $(1)/$(notdir $(1)).bin: $(1)/$(notdir $(1)).ihx
@@ -298,6 +331,9 @@ clean:
 	@echo ""
 	@echo ">> Cleaning artifacts in _defaults folder..."
 	cd _defaults && $(RM) $(CLEAN_EXTS)
+	@echo ""
+	@echo ">> Cleaning artifacts in _library folder..."
+	cd _library && $(RM) $(CLEAN_EXTS) $(LIB_NAME)
 	@echo ""
 	@echo ">> Cleaning timestamps.."
 	@$(foreach folder,$(ALL_DIRS), echo "   cleaning $(folder) timestamps..."; $(RM) $(dir $(folder))*.stamp;)
