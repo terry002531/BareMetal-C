@@ -12,17 +12,21 @@ These are the instructions to follow to set up your computer to be ready to do a
 
 You need to follow *all the steps* from 1-4 to have a working environment for the class:
 
-- [x] 1. Setup Tools by clicking [here](./setup/1-setup-tools.md).
-- [x] 2. Setup `SimulIDE` by clicking [here](./setup/2-setup-simulide.md).
-- [x] 3. Setup `Visual Studio Code` (`VS Code`) by clicking [here](./setup/3-setup-vs-code.md).
-- [x] 4. Test the whole system by clicking [here](./setup/4-setup-test.md).
+1. Setup Tools - [instructions](./setup/1-setup-tools.md).
+2. Setup `SimulIDE` - [instructions](./setup/2-setup-simulide.md).
+3. Setup `Visual Studio Code` (`VS Code`) - [instructions](./setup/3-setup-vs-code.md).
+4. Test the whole system - [instructions](./setup/4-setup-test.md).
 
 Your environment should be ready.
 
 ---
   
-  **Warning:** Only perform step 5 below if you have problems with `Docker Desktop` or `VS Code`:
-- [x] 5. Reset Docker and VS Code to original state. Click [here](./setup/5-reset-system.md)
+>  **Warning:** Only perform step 5 below if you have problems with `Docker Desktop` or `VS Code`.
+>  It will erase all your Docker `images` and reset your VS Code `settings` and `extensions`. It will not touch anything else. Your personal data files should remain safe.
+>
+>  But we cannot guarantee that. So, **If you follow the *Reset* instructions below, *proceed at your own risk*.**
+> 
+>  5. Reset Docker and VS Code to original state. See [instructions](./setup/5-reset-system.md)
 
 ---
 
