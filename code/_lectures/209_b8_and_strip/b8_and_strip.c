@@ -11,10 +11,10 @@ void main(void) {
 
     while (true) {
         *s = B8(10101111);     // X.X.XXXX
-        baremetal_delay(4000);
+        baremetal_delay(1000);
         *s = B8(11110101);     // XXXX.X.X
-        baremetal_delay(4000);
+        baremetal_delay(1000);
         *s = B8(01010101);     // .X.X.X.X
-        baremetal_delay(4000);
+        baremetal_delay(1000);
     }
 }
