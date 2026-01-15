@@ -1,0 +1,73 @@
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="DecToBcd" CircId="DecToBcd-5" mainComp="false" Show_id="false" Show_Val="false" Pos="-532,-284" rotation="0" hflip="1" vflip="1" label="DecToBcd-5" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" _16_Bits="false" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1000 MΩ" Invert_Inputs="true" Out_High_V="5 V" Out_Low_V="0 V" Out_Imped="40 Ω" Inverted="false" Open_Collector="false" pd_n="1 _Gates" Tpd_ps="1 ns" Tr_ps="1 ns" Tf_ps="1 ns" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-6" mainComp="false" Show_id="false" Show_Val="false" Pos="-604,-332" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-6" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-7" mainComp="false" Show_id="false" Show_Val="false" Pos="-604,-316" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-7" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-8" mainComp="false" Show_id="false" Show_Val="false" Pos="-604,-300" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-8" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-9" mainComp="false" Show_id="false" Show_Val="false" Pos="-604,-284" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-9" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-10" mainComp="false" Show_id="false" Show_Val="false" Pos="-604,-268" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-10" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Probe" CircId="Probe-11" mainComp="false" Show_id="false" Show_Val="true" Pos="-484,-316" rotation="-45" hflip="1" vflip="1" label="Probe-11" idLabPos="16,-16" labelrot="45" valLabPos="16,0" valLabRot="45" ShowVolt="true" Threshold="2.5 V" />
+
+<item itemtype="Probe" CircId="Probe-12" mainComp="false" Show_id="false" Show_Val="true" Pos="-460,-308" rotation="-45" hflip="1" vflip="1" label="Probe-12" idLabPos="16,-16" labelrot="45" valLabPos="16,0" valLabRot="45" ShowVolt="true" Threshold="2.5 V" />
+
+<item itemtype="Probe" CircId="Probe-13" mainComp="false" Show_id="false" Show_Val="true" Pos="-436,-300" rotation="-45" hflip="1" vflip="1" label="Probe-13" idLabPos="16,-16" labelrot="45" valLabPos="16,0" valLabRot="45" ShowVolt="true" Threshold="2.5 V" />
+
+<item itemtype="Probe" CircId="Probe-14" mainComp="false" Show_id="false" Show_Val="true" Pos="-412,-292" rotation="-45" hflip="1" vflip="1" label="Probe-14" idLabPos="16,-16" labelrot="45" valLabPos="16,0" valLabRot="45" ShowVolt="true" Threshold="2.5 V" />
+
+<item itemtype="Rail" CircId="Rail-15" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="-588,-252" rotation="90" hflip="1" vflip="1" label="Rail-15" idLabPos="-5,-10" labelrot="-90" valLabPos="-12,6" valLabRot="-90" Voltage="5 V" />
+
+<item itemtype="Ground" CircId="Ground-20" mainComp="false" Show_id="false" Show_Val="false" Pos="-508,-332" rotation="0" hflip="1" vflip="1" label="Ground-20" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Node" CircId="Node-16" mainComp="false" Pos="-564,-268" />
+
+<item itemtype="Node" CircId="Node-17" mainComp="false" Pos="-564,-260" />
+
+<item itemtype="Node" CircId="Node-18" mainComp="false" Pos="-564,-252" />
+
+<item itemtype="Node" CircId="Node-19" mainComp="false" Pos="-564,-244" />
+
+<item itemtype="Connector" uid="Connector-3" startpinid="Fixed Voltage-6-outnod" endpinid="DecToBcd-5-in0" pointList="-588,-332,-556,-332,-556,-316" />
+
+<item itemtype="Connector" uid="Connector-4" startpinid="Fixed Voltage-7-outnod" endpinid="DecToBcd-5-in1" pointList="-588,-316,-564,-316,-564,-308,-556,-308" />
+
+<item itemtype="Connector" uid="Connector-5" startpinid="Fixed Voltage-8-outnod" endpinid="DecToBcd-5-in2" pointList="-588,-300,-556,-300" />
+
+<item itemtype="Connector" uid="Connector-6" startpinid="Fixed Voltage-9-outnod" endpinid="DecToBcd-5-in3" pointList="-588,-284,-580,-284,-580,-292,-556,-292" />
+
+<item itemtype="Connector" uid="Connector-7" startpinid="Fixed Voltage-10-outnod" endpinid="DecToBcd-5-in4" pointList="-588,-268,-572,-268,-572,-284,-556,-284" />
+
+<item itemtype="Connector" uid="Connector-8" startpinid="DecToBcd-5-out0" endpinid="Probe-11-inpin" pointList="-508,-300,-500,-300" />
+
+<item itemtype="Connector" uid="Connector-9" startpinid="DecToBcd-5-out1" endpinid="Probe-12-inpin" pointList="-508,-292,-476,-292" />
+
+<item itemtype="Connector" uid="Connector-10" startpinid="DecToBcd-5-out2" endpinid="Probe-13-inpin" pointList="-508,-284,-452,-284" />
+
+<item itemtype="Connector" uid="Connector-11" startpinid="DecToBcd-5-out3" endpinid="Probe-14-inpin" pointList="-508,-276,-428,-276" />
+
+<item itemtype="Connector" uid="Connector-13" startpinid="DecToBcd-5-in6" endpinid="Node-16-1" pointList="-556,-268,-564,-268" />
+
+<item itemtype="Connector" uid="Connector-14" startpinid="DecToBcd-5-in5" endpinid="Node-16-0" pointList="-556,-276,-564,-276,-564,-268" />
+
+<item itemtype="Connector" uid="Connector-16" startpinid="DecToBcd-5-in7" endpinid="Node-17-1" pointList="-556,-260,-564,-260" />
+
+<item itemtype="Connector" uid="Connector-17" startpinid="Node-16-2" endpinid="Node-17-0" pointList="-564,-268,-564,-260" />
+
+<item itemtype="Connector" uid="Connector-19" startpinid="DecToBcd-5-in8" endpinid="Node-18-1" pointList="-556,-252,-564,-252" />
+
+<item itemtype="Connector" uid="Connector-20" startpinid="Node-17-2" endpinid="Node-18-0" pointList="-564,-260,-564,-252" />
+
+<item itemtype="Connector" uid="Connector-22" startpinid="DecToBcd-5-in9" endpinid="Node-19-1" pointList="-556,-244,-564,-244" />
+
+<item itemtype="Connector" uid="Connector-23" startpinid="Node-18-2" endpinid="Node-19-0" pointList="-564,-252,-564,-244" />
+
+<item itemtype="Connector" uid="Connector-24" startpinid="Node-19-2" endpinid="Rail-15-outnod" pointList="-564,-244,-564,-236,-588,-236" />
+
+<item itemtype="Connector" uid="Connector-25" startpinid="DecToBcd-5-in15" endpinid="Ground-20-Gnd" pointList="-524,-332,-524,-356,-508,-356,-508,-348" />
+
+</circuit>

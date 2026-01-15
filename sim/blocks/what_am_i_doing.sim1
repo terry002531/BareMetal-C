@@ -1,0 +1,27 @@
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Ssd1306" CircId="Ssd1306-4" mainComp="false" Show_id="true" Show_Val="false" Pos="-756,-140" rotation="0" hflip="1" vflip="1" label="Ssd1306-4" idLabPos="-33.8285,-70.6664" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="White" Width="128 _px" Height="64 _px" Rotate="true" Control_Code="60" Frequency="100 _kHz" />
+
+<item itemtype="Hd44780" CircId="Hd44780-6" mainComp="false" Show_id="true" Show_Val="false" Pos="-1068,-108" rotation="0" hflip="1" vflip="1" label="Hd44780-6" idLabPos="70,-82" labelrot="0" valLabPos="-16,20" valLabRot="0" Rows="2" Cols="16" />
+
+<item itemtype="Max72xx_matrix" CircId="Max72xx_matrix-7" mainComp="false" Show_id="true" Show_Val="false" Pos="-1024,0" rotation="0" hflip="1" vflip="1" label="Max72xx_matrix-7" idLabPos="-32,-58" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" NumDisplays="4" />
+
+<item itemtype="LedMatrix" CircId="LedMatrix-8" mainComp="false" Show_id="false" Show_Val="false" Pos="-860,-308" rotation="0" hflip="1" vflip="1" label="LedMatrix-8" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" Rows="8" Cols="8" Vertical_Pins="false" Threshold="2.4 V" MaxCurrent="20 mA" Resistance="0.6 Ω" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-9" mainComp="false" Show_id="false" Show_Val="false" Pos="-956,-308" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-9" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-10" mainComp="false" Show_id="false" Show_Val="false" Pos="-956,-292" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-10" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-11" mainComp="false" Show_id="false" Show_Val="false" Pos="-860,-212" rotation="270" hflip="1" vflip="1" label="Fixed Voltage-11" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="false" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-12" mainComp="false" Show_id="false" Show_Val="false" Pos="-844,-212" rotation="270" hflip="1" vflip="1" label="Fixed Voltage-12" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="false" />
+
+<item itemtype="Connector" uid="Connector-1" startpinid="Fixed Voltage-10-outnod" endpinid="LedMatrix-8-pinRow2" pointList="-940,-292,-876,-292" />
+
+<item itemtype="Connector" uid="Connector-2" startpinid="Fixed Voltage-9-outnod" endpinid="LedMatrix-8-pinRow0" pointList="-940,-308,-876,-308" />
+
+<item itemtype="Connector" uid="Connector-3" startpinid="Fixed Voltage-11-outnod" endpinid="LedMatrix-8-pinCol0" pointList="-860,-228,-860,-236" />
+
+<item itemtype="Connector" uid="Connector-4" startpinid="Fixed Voltage-12-outnod" endpinid="LedMatrix-8-pinCol2" pointList="-844,-228,-844,-236" />
+
+</circuit>
