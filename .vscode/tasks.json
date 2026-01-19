@@ -3,24 +3,33 @@
     "tasks": [
         {
             "label": "1. Build Project",
-            "group": { "kind": "build", "isDefault": true },
-            "presentation": { "echo": true, "reveal": "always", "focus": false, "panel": "shared" },
-            "problemMatcher": ["$sdcc-core", "$sdcc-linker"],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [
+                "$sdcc-core",
+                "$sdcc-linker"
+            ],
             "detail": "Compiles and link code.",
-            
-            // --- Default Behavior (Windows & macOS) ---
             "type": "shell",
             "command": "docker",
             "args": [
-                "run", "--rm",
-                "-v", "${workspaceFolder}:/BareMetal-C",
+                "run",
+                "--rm",
+                "-v",
+                "${workspaceFolder}:/BareMetal-C",
                 "ghcr.io/kongkrit/baremetal-c",
                 "make",
-                "DIR='${fileDirname}'", 
+                "DIR='${fileDirname}'",
                 "RECURSE=0"
             ],
-
-            // --- Linux Override (Hybrid Logic) ---
             "linux": {
                 "command": "/bin/sh",
                 "args": [
@@ -31,22 +40,30 @@
         },
         {
             "label": "2. Build All Projects",
-            "group": { "kind": "build", "isDefault": false },
-            "presentation": { "echo": true, "reveal": "always", "panel": "shared" },
-            "problemMatcher": ["$sdcc-core", "$sdcc-linker"],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": [
+                "$sdcc-core",
+                "$sdcc-linker"
+            ],
             "detail": "Build all projects.",
-
-            // --- Default Behavior (Windows & macOS) ---
             "type": "shell",
             "command": "docker",
             "args": [
-                "run", "--rm",
-                "-v", "${workspaceFolder}:/BareMetal-C",
+                "run",
+                "--rm",
+                "-v",
+                "${workspaceFolder}:/BareMetal-C",
                 "ghcr.io/kongkrit/baremetal-c",
                 "make"
             ],
-
-            // --- Linux Override (Hybrid Logic) ---
             "linux": {
                 "command": "/bin/sh",
                 "args": [
@@ -57,23 +74,30 @@
         },
         {
             "label": "3. Clean All Projects",
-            "group": { "kind": "build", "isDefault": false },
-            "presentation": { "echo": true, "reveal": "always", "panel": "shared" },
-            "problemMatcher": ["$sdcc-cleaner"],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": [
+                "$sdcc-cleaner"
+            ],
             "detail": "Clean all projects.",
-
-            // --- Default Behavior (Windows & macOS) ---
             "type": "shell",
             "command": "docker",
             "args": [
-                "run", "--rm",
-                "-v", "${workspaceFolder}:/BareMetal-C",
+                "run",
+                "--rm",
+                "-v",
+                "${workspaceFolder}:/BareMetal-C",
                 "ghcr.io/kongkrit/baremetal-c",
                 "make",
                 "clean"
             ],
-
-            // --- Linux Override (Hybrid Logic) ---
             "linux": {
                 "command": "/bin/sh",
                 "args": [
@@ -81,6 +105,29 @@
                     "if [ \"$IS_BAREMETAL_C_CONTAINER\" = \"true\" ]; then make clean; else docker run --rm -v \"${workspaceFolder}:/BareMetal-C\" ghcr.io/kongkrit/baremetal-c make clean; fi"
                 ]
             }
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe 生成活动文件",
+            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
         }
     ]
 }
