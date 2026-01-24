@@ -72,7 +72,7 @@
   
   ![open circuit](./pix/4-open-circuit.png)
 
-- Choose `Documents/BareMetal-C/sim/05_freq_8MHz.sim1`
+- Choose `Documents/BareMetal-C/sim/05_freq_200kHz.sim1`
 - The following picture should show up. *Note the area in red rectangle.*
 
   ![full circuit](./pix/4-full-circuit.png)
