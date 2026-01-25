@@ -44,7 +44,7 @@ You must have installed the following:
 
   ![open circuit](./pix/4-open-circuit.png)
 
-  Go to `BareMetal-C/sim` folder and choose `05_freq_8MHz.sim1` file.
+  Go to `BareMetal-C/sim` folder and choose `05_freq_200kHz.sim1` file.
 
 - You should see the circuit below:
 

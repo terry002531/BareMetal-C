@@ -1,5 +1,15 @@
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+
 # Default to LF for everything
 * text=auto eol=lf
+.editorconfig  text eol=lf
+
+# Web & Python Sources
+*.html text eol=lf
+*.css  text eol=lf
+*.js   text eol=lf
+*.py   text eol=lf
 
 # Windows Scripts must be CRLF
 *.bat text eol=crlf

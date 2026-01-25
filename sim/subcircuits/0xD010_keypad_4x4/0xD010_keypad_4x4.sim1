@@ -44,7 +44,7 @@
 
 <item itemtype="Tunnel" CircId="Tunnel-396" mainComp="false" Show_id="false" Show_Val="false" Pos="-44,-44" rotation="0" hflip="-1" vflip="1" label="Tunnel-396" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="16,220" circPos="-44,-44" boardRot="0" circRot="0" boardHflip="1" boardVflip="1" Name="D010_" IsBus="false" />
 
-<item itemtype="KeyPad" CircId="KeyPad-397" mainComp="true" Show_id="false" Show_Val="false" Pos="-60,-268" rotation="0" hflip="1" vflip="1" label="KeyPad-397" idLabPos="-8,-16" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="16,24" circPos="-60,-268" boardRot="0" circRot="0" boardHflip="1" boardVflip="1" Rows="4" Cols="4" Key_Labels="   R ▲ —◀⬛▶• ▼ X" />
+<item itemtype="KeyPad" CircId="KeyPad-397" mainComp="false" Show_id="false" Show_Val="false" Pos="-60,-268" rotation="0" hflip="1" vflip="1" label="KeyPad-397" idLabPos="-8,-16" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="16,24" circPos="-60,-268" boardRot="0" circRot="0" boardHflip="1" boardVflip="1" Rows="4" Cols="4" Key_Labels="   R ▲ —◀⬛▶• ▼ X" />
 
 <item itemtype="ResistorDip" CircId="ResistorDip-398" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="44,-292" rotation="270" hflip="1" vflip="1" label="ResistorDip-398" idLabPos="-24,-40" labelrot="0" valLabPos="4,-26" valLabRot="90" boardPos="-136,-104" circPos="44,-292" boardRot="270" circRot="270" boardHflip="1" boardVflip="1" Resistance="3.3 kΩ" Size="4" PullUp="true" PuVolt="5 V" />
 
@@ -74,7 +74,7 @@
 
 <item itemtype="TextComponent" CircId="TextComponent-431" mainComp="false" Show_id="false" Show_Val="false" Pos="208,-220" rotation="0" hflip="1" vflip="1" label="TextComponent-431" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="32,4" circPos="208,-220" boardRot="0" circRot="0" boardHflip="1" boardVflip="1" Margin="-3 _px" Border="0 _px" Color="#ffffdc" Opacity="1" Font="Helvetica [Cronyx]" Font_Color="#000080" Font_Size="8 _px" Fixed_Width="true" Text="D010" />
 
-<item itemtype="Tunnel" CircId="Tunnel-432" mainComp="false" Show_id="false" Show_Val="false" Pos="204,-84" rotation="0" hflip="-1" vflip="1" label="Tunnel-432" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="-1e+06,-1e+06" circPos="0,0" boardRot="-1e+06" circRot="0" boardHflip="1" boardVflip="1" Name="DATA" IsBus="true" />
+<item itemtype="Tunnel" CircId="Tunnel-432" mainComp="false" Show_id="false" Show_Val="false" Pos="204,-84" rotation="0" hflip="-1" vflip="1" label="Tunnel-432" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" boardPos="24,120" circPos="204,-84" boardRot="0" circRot="0" boardHflip="-1" boardVflip="1" Name="DATA" IsBus="true" />
 
 <item itemtype="Node" CircId="Node-250" mainComp="false" boardPos="-1e+06,-1e+06" circPos="0,0" boardRot="-1e+06" circRot="0" boardHflip="1" boardVflip="1" Pos="4,24" />
 
