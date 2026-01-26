@@ -7,7 +7,7 @@ uint8_t state = B8(00000000);
 // CONTROLLER
 #define PUSHBUTTON_BASE ((volatile uint8_t *)0xD000U)
 // VIEW
-#define LED_STRIP ((volatile uint8_t *)0xE010U)
+#define LED_STRIP ((volatile uint8_t *)0xE008U)
 
 void main(void){
     
