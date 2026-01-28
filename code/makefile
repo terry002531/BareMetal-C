@@ -40,7 +40,7 @@ VSCODE_HEADER_FILE   := $(VSCODE_HEADER_FOLDER)/stdint.h
 
 # List of folders to ignore (space separated, relative to BareMetal-C/code/)
 # e.g. EXCLUDED_DIRS := _instructor/_problem_matcher_tests folder_b folder_c
-EXCLUDED_DIRS := _instructor/_problem_matcher_tests .obsolete
+EXCLUDED_DIRS := _instructor/_problem_matcher_tests _instructor/_intentionally_broken .obsolete
 
 # -----------------------------------------------------------------------------
 # Argument Processing
@@ -60,25 +60,26 @@ endif
 # Sanitize DIR (replace backslashes with forward slashes)
 RAW_DIR2 := $(subst \,/,$(RAW_DIR))
 
-# Regex: match (something)?/BareMetal-C/code followed by end-of-string ($) or a slash (/)
 #    Note: '.*?' is non-greedy match to handle long paths correctly.
-FIXED_DIR := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C/code/*|/BareMetal-C/code/|){ s|/$$||; print; }')
+# Regex: match (something)?/BareMetal-C/code followed by end-of-string ($) or a slash (/)
+FIXED_DIR_STU := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C/code/*|/BareMetal-C/code/|){ s|/$$||; print; }')
+FIXED_DIR_DEV := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C-Dev/code/*|/BareMetal-C-Dev/code/|){ s|/$$||; print; }')
 
-# 2. Check: If FIXED_DIR is empty, the Perl regex failed to match.
-ifeq ($(FIXED_DIR),)
+# 2. Check: If FIXED_DIR_STU is empty, the Perl regex failed to match.
+ifeq ($(FIXED_DIR_STU),)
     $(info RAW_DIR2 = $(RAW_DIR2))
     $(error [ERROR] Invalid Path! Must contain '/BareMetal-C/code')
 endif
 
-STRIPPED_DIR := $(shell echo '$(FIXED_DIR)' | perl -pe 's#.*(?:/BareMetal-C|/BareMetal-C)/code/?##; s#^/##; s#^/##; s#/*$$##')
+STRIPPED_DIR := $(shell echo '$(FIXED_DIR_STU)' | perl -pe 's#.*(?:/BareMetal-C|/BareMetal-C)/code/?##; s#^/##; s#^/##; s#/*$$##')
 
 # 3. Echo resolved values
 # $(info RAW_DIR      = $(RAW_DIR))
 # $(info RAW_DIR2     = $(RAW_DIR2))
-$(info FIXED_DIR    = $(FIXED_DIR))
-$(info STRIPPED_DIR = $(STRIPPED_DIR))
-$(info RECURSE      = $(RECURSE))
-$(info EXLUDED_DIRS = $(EXCLUDED_DIRS))
+$(info FIXED_DIR_STU = $(FIXED_DIR_STU))
+$(info STRIPPED_DIR  = $(STRIPPED_DIR))
+$(info RECURSE       = $(RECURSE))
+$(info EXLUDED_DIRS  = $(EXCLUDED_DIRS))
 
 # -----------------------------------------------------------------------------
 # Discovery & Target Selection
