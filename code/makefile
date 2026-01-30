@@ -65,18 +65,22 @@ RAW_DIR2 := $(subst \,/,$(RAW_DIR))
 FIXED_DIR_STU := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C/code/*|/BareMetal-C/code/|){ s|/$$||; print; }')
 FIXED_DIR_DEV := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C-Dev/code/*|/BareMetal-C-Dev/code/|){ s|/$$||; print; }')
 
-# 2. Check: If FIXED_DIR_STU is empty, the Perl regex failed to match.
-ifeq ($(FIXED_DIR_STU),)
+# 2. Check Paths: Determine valid path and STRIPPED_DIR
+ifneq ($(FIXED_DIR_STU),)
+    STRIPPED_DIR := $(shell echo '$(FIXED_DIR_STU)' | perl -pe 's#.*(?:/BareMetal-C|/BareMetal-C)/code/?##; s#^/##; s#^/##; s#/*$$##')
+else ifneq ($(FIXED_DIR_DEV),)
+    STRIPPED_DIR := $(FIXED_DIR_DEV)
+    RECURSE := 0
+else
     $(info RAW_DIR2 = $(RAW_DIR2))
-    $(error [ERROR] Invalid Path! Must contain '/BareMetal-C/code')
+    $(error [ERROR] Invalid Path! Must contain '/BareMetal-C/code' or '/BareMetal-C-Dev/code')
 endif
-
-STRIPPED_DIR := $(shell echo '$(FIXED_DIR_STU)' | perl -pe 's#.*(?:/BareMetal-C|/BareMetal-C)/code/?##; s#^/##; s#^/##; s#/*$$##')
 
 # 3. Echo resolved values
 # $(info RAW_DIR      = $(RAW_DIR))
 # $(info RAW_DIR2     = $(RAW_DIR2))
 $(info FIXED_DIR_STU = $(FIXED_DIR_STU))
+$(info FIXED_DIR_DEV = $(FIXED_DIR_DEV))
 $(info STRIPPED_DIR  = $(STRIPPED_DIR))
 $(info RECURSE       = $(RECURSE))
 $(info EXLUDED_DIRS  = $(EXCLUDED_DIRS))
@@ -340,7 +344,7 @@ else
 			} \
 			else { for (i=0; i<count; i++) print buffer[i]; } \
 		}' > $$(@:%.bin=%.txs)
-		@$(CP) $$@ ../sim/
+		@$(CP) $$@ /BareMetal-C/sim/
 		@echo "$$(shell $(TIMESTAMP_CMD))" > $$($(1)_STAMP)
 		@echo "$$(shell $(TIMESTAMP_CMD)) ------------ built $(1).bin ------------"
 		@echo ""
