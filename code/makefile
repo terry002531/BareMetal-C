@@ -18,7 +18,9 @@ SDOBJCOPY := sdobjcopy
 Z80DASM   := z80dasm
 
 ASMFLAGS  := -l
-CFLAGS    := -mz80 --std c99 -I_headers -I_headers_student --Werror
+CFLAGS    := -mz80 --std c99 -I_headers -I_headers_student --Werror --disable-warning 84
+# warning  84 : variable may be used before initialization
+# warning 112 : function implicit declaration
 # COPTFLAGS := --no-peep --nooverlay --nogcse --nolospre --nogenconstprop --nolabelopt --noinvariant --noinduction --noloopreverse --nostdlibcall
 COPTFLAGS :=
 LDFLAGS   := -mz80 --no-std-crt0
@@ -38,7 +40,7 @@ VSCODE_HEADER_FILE   := $(VSCODE_HEADER_FOLDER)/stdint.h
 
 # List of folders to ignore (space separated, relative to BareMetal-C/code/)
 # e.g. EXCLUDED_DIRS := _instructor/_problem_matcher_tests folder_b folder_c
-EXCLUDED_DIRS := _instructor/_problem_matcher_tests .obsolete
+EXCLUDED_DIRS := _instructor/_problem_matcher_tests _instructor/_intentionally_broken .obsolete
 
 # -----------------------------------------------------------------------------
 # Argument Processing
@@ -58,25 +60,30 @@ endif
 # Sanitize DIR (replace backslashes with forward slashes)
 RAW_DIR2 := $(subst \,/,$(RAW_DIR))
 
-# Regex: match (something)?/BareMetal-C/code followed by end-of-string ($) or a slash (/)
 #    Note: '.*?' is non-greedy match to handle long paths correctly.
-FIXED_DIR := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C/code/*|/BareMetal-C/code/|){ s|/$$||; print; }')
+# Regex: match (something)?/BareMetal-C/code followed by end-of-string ($) or a slash (/)
+FIXED_DIR_STU := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C/code/*|/BareMetal-C/code/|){ s|/$$||; print; }')
+FIXED_DIR_DEV := $(shell echo '$(RAW_DIR2)' | perl -ne 'if(s|.*?/BareMetal-C-Dev/code/*|/BareMetal-C-Dev/code/|){ s|/$$||; print; }')
 
-# 2. Check: If FIXED_DIR is empty, the Perl regex failed to match.
-ifeq ($(FIXED_DIR),)
+# 2. Check Paths: Determine valid path and STRIPPED_DIR
+ifneq ($(FIXED_DIR_STU),)
+    STRIPPED_DIR := $(shell echo '$(FIXED_DIR_STU)' | perl -pe 's#.*(?:/BareMetal-C|/BareMetal-C)/code/?##; s#^/##; s#^/##; s#/*$$##')
+else ifneq ($(FIXED_DIR_DEV),)
+    STRIPPED_DIR := $(FIXED_DIR_DEV)
+    RECURSE := 0
+else
     $(info RAW_DIR2 = $(RAW_DIR2))
-    $(error [ERROR] Invalid Path! Must contain '/BareMetal-C/code')
+    $(error [ERROR] Invalid Path! Must contain '/BareMetal-C/code' or '/BareMetal-C-Dev/code')
 endif
-
-STRIPPED_DIR := $(shell echo '$(FIXED_DIR)' | perl -pe 's#.*(?:/BareMetal-C|/BareMetal-C)/code/?##; s#^/##; s#^/##; s#/*$$##')
 
 # 3. Echo resolved values
 # $(info RAW_DIR      = $(RAW_DIR))
 # $(info RAW_DIR2     = $(RAW_DIR2))
-$(info FIXED_DIR    = $(FIXED_DIR))
-$(info STRIPPED_DIR = $(STRIPPED_DIR))
-$(info RECURSE      = $(RECURSE))
-$(info EXLUDED_DIRS = $(EXCLUDED_DIRS))
+$(info FIXED_DIR_STU = $(FIXED_DIR_STU))
+$(info FIXED_DIR_DEV = $(FIXED_DIR_DEV))
+$(info STRIPPED_DIR  = $(STRIPPED_DIR))
+$(info RECURSE       = $(RECURSE))
+$(info EXLUDED_DIRS  = $(EXCLUDED_DIRS))
 
 # -----------------------------------------------------------------------------
 # Discovery & Target Selection
@@ -337,7 +344,7 @@ else
 			} \
 			else { for (i=0; i<count; i++) print buffer[i]; } \
 		}' > $$(@:%.bin=%.txs)
-		@$(CP) $$@ ../sim/
+		@$(CP) $$@ /BareMetal-C/sim/
 		@echo "$$(shell $(TIMESTAMP_CMD))" > $$($(1)_STAMP)
 		@echo "$$(shell $(TIMESTAMP_CMD)) ------------ built $(1).bin ------------"
 		@echo ""

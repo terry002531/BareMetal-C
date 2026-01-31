@@ -13,7 +13,8 @@
         ],
         // Optional: If there is a specific Microsoft extension you HATE, list it here
         "unwantedRecommendations": [
-            "github.copilot" 
+            "ms-vscode.makefile-tools",
+            "github.copilot"
         ]
     },
 
