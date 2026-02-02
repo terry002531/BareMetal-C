@@ -63,7 +63,7 @@
 
 ---
 
-### Colored Balls 🔴 🟡 🔵 ⚫ ⚪
+### Colored Balls: 🔴 🟡 🔵 ⚫ ⚪
 <details><summary>expand</summary>
 
 Here are the standard Unicode "Large Circle" emojis available in other colors:
@@ -82,7 +82,7 @@ Here are the standard Unicode "Large Circle" emojis available in other colors:
 
 ---
 
-### Dashes `-  –  —  −`
+### Dashes: `-  –  —  −`
 
 <details><summary>expand</summary>
 
@@ -107,6 +107,61 @@ Here are the standard Unicode "Large Circle" emojis available in other colors:
 
 ### Visual Comparison
 `hyphen-minus` (-) vs `en-dash` (–) vs `em-dash` (—) vs `minus` (−)
+
+</details>
+
+---
+
+### Dots ` . . • ‧ ⋅ ∴ ∷ ⋮ ⋯ ⬝ ○ ⦿ `
+
+<details><summary>expand</summary>
+
+## Common Punctuation & Text
+| Glyph | Name | Code Point | HTML Entity |
+| :---: | :--- | :--- | :--- |
+| . | Full Stop | `U+002E` | `.` |
+| . | Middle Dot | `U+00B7` | `&middot;` |
+| • | Bullet | `U+2022` | `&bull;` |
+| … | Horizontal Ellipsis | `U+2026` | `&hellip;` |
+| ‧ | Hyphenation Point | `U+2027` | `&#8231;` |
+
+## Math & Logic Operators
+| Glyph | Name | Code Point | HTML Entity |
+| :---: | :--- | :--- | :--- |
+| ⋅ | Dot Operator | `U+22C5` | `&sdot;` |
+| ∶ | Ratio | `U+2236` | `&#8758;` |
+| ∴ | Therefore | `U+2234` | `&there4;` |
+| ∵ | Because | `U+2235` | `&because;` |
+| ∷ | Proportion | `U+2237` | `&#8759;` |
+| ⨀ | N-ary Circled Dot Operator | `U+2A00` | `&#10752;` |
+
+## Vertical & Diagonal Ellipses
+| Glyph | Name | Code Point | HTML Entity |
+| :---: | :--- | :--- | :--- |
+| ⋮ | Vertical Ellipsis | `U+22EE` | `&#8942;` |
+| ⋯ | Midline Horizontal Ellipsis | `U+22EF` | `&#8943;` |
+| ⋰ | Up Right Diagonal Ellipsis | `U+22F0` | `&#8944;` |
+| ⋱ | Down Right Diagonal Ellipsis | `U+22F1` | `&#8945;` |
+
+## Geometric Shapes
+| Glyph | Name | Code Point | HTML Entity |
+| :---: | :--- | :--- | :--- |
+| ● | Black Circle | `U+25CF` | `&#9679;` |
+| ○ | White Circle | `U+25CB` | `&#9675;` |
+| ◌ | Dotted Circle | `U+25CC` | `&#9676;` |
+| ◎ | Bullseye | `U+25CE` | `&#9678;` |
+| ◦ | White Bullet | `U+25E6` | `&#9702;` |
+| ⦿ | Circled Bullet | `U+29BF` | `&#10687;` |
+| ⬝ | Black Small Square | `U+2B1D` | `&#11037;` |
+| ․ | One Dot Leader | `U+2024` | `&#8228;` |
+
+## Asian / CJK Scripts
+| Glyph | Name | Code Point |
+| :---: | :--- | :--- |
+| 。 | Ideographic Full Stop | `U+3002` |
+| ・ | Katakana Middle Dot | `U+30FB` |
+| ． | Fullwidth Full Stop | `U+FF0E` |
+| ｡ | Halfwidth Ideographic Full Stop | `U+FF61` |
 
 </details>
 
