@@ -9,8 +9,14 @@
 #define VIEW_DECIMAL ((volatile uint8_t * const)0xE800U)
 
 void view_update(uint8_t value){
-    // WRONG
-    *VIEW_DECIMAL = value;
+    // WRONG                    // 把10进制转为二进制存储
+    //*VIEW_DECIMAL = value;    // 把这个 8-bit 数据拆成两个 4-bit，然后把每个 4-bit 当作一个十六进制数字显示
+    // 只能显示value对应的16进制数字
+    uint8_t ten = value / 10;
+    uint8_t unit = value % 10;
+    uint8_t display_value = (ten << 4) | unit; // 高4位存十位，低4位存个位
+    *VIEW_DECIMAL = display_value;      // 把value十位存储在地址前四位，个位存储在地址后四位
+    // 这个是单字节数据，不存在小端序引起的倒着存储
 }
 
 void main(void){

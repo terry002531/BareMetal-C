@@ -86,7 +86,12 @@ void view_update(const model_t *mp){
 command controller_read(void){
     static command c;
     uint8_t key = *KEYPAD;
-    // add code
+    if(key & B8(00000001)) key = key & B8(01111111);
+    switch (key) {
+        case B8(00100000): c = LEFT; break;
+        case B8(00100010): c = RIGHT; break;
+        default: c = NONE; break;
+    }
 }
 
 void main(void){

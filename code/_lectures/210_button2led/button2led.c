@@ -1,3 +1,4 @@
+// 07-210
 #include <stdint.h>
 #include <stdbool.h>
 #include "baremetal_binary.h"
@@ -17,7 +18,7 @@ void main(void){
         // CONTROLLER, clear bit mask
         bit_mask = B8(00000000);
         for (uint8_t i = 0; i < 8; i = i + 1) {
-            if (*(PUSHBUTTON_BASE + i)) {
+            if (*(PUSHBUTTON_BASE + i) == 1) {
                 bit_mask = bit_mask | ( 1U << (7-i) );
             }
         }

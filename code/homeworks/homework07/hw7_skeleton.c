@@ -43,8 +43,8 @@ uint8_t random_8bit(uint8_t seed){
     return seq8[counter];
 }
 
-uint8_t random_2bit(uint8_t seed){
-    static const uint8_t seq2[256] = {
+uint8_t random_2bit(uint8_t seed){  // 生成随机数，随机生成新方块位置
+        static const uint8_t seq2[256] = {
         0x3, 0x2, 0x1, 0x1, 0x0, 0x1, 0x3, 0x3, 0x2, 0x3, 0x0, 0x0, 0x2, 0x2, 0x0, 0x1,
         0x1, 0x2, 0x3, 0x3, 0x0, 0x3, 0x0, 0x2, 0x0, 0x1, 0x0, 0x2, 0x1, 0x2, 0x1, 0x3,
         0x2, 0x0, 0x1, 0x0, 0x3, 0x3, 0x1, 0x2, 0x3, 0x2, 0x0, 0x2, 0x3, 0x0, 0x1, 0x1,
@@ -92,18 +92,6 @@ typedef struct {
     uint8_t random;
 } model_t;
 
-void model_init(model_t *mp){
-    mp->random = random_8bit(123);
-    mp->mole_position = random_2bit(mp->random);
-    // fill in code here
-}
-
-void model_update(model_t *mp, command c){
-    switch (c) {
-        // fill in code here
-    }
-}
-
 // VIEW helper table
 uint8_t bcd_uint8(uint8_t num) {
     static const uint8_t out[256] = {
@@ -127,18 +115,75 @@ uint8_t bcd_uint8(uint8_t num) {
     return out[num];
 }
 
+void model_init(model_t *mp){
+    mp->hit_count = 0;  
+    mp->miss_count = 0;
+    mp->score = bcd_uint8(0);
+    mp->random = random_8bit(123);
+    mp->mole_position = random_2bit(mp->random);
+    mp->timer = MAX_TIMER;
+}
+
+void add_score(model_t *mp,uint8_t hit){
+    if(mp->mole_position == hit && mp->score <= MAX_SCORE){
+        mp->score = mp->score + 1;
+        mp->hit_count = mp->hit_count + 1;
+    } else {
+        mp->score = (mp->score >= MISS_PENALTY) ? (mp->score - MISS_PENALTY) : 0;
+        mp->miss_count = mp->miss_count + 1;
+    }
+}
+
+void modle_init2(model_t *mp){
+    mp->timer = MAX_TIMER;
+    mp->mole_position = random_2bit(mp->random);
+}
+
+void adding(model_t *mp, uint8_t hit){
+    if(mp->mole_position == hit){
+        if(mp->score + mp->timer <= MAX_SCORE){
+            mp->score = mp->score + mp->timer;
+        }
+        if(mp->score + mp->timer >= MAX_SCORE){
+            mp->score = MAX_SCORE;
+        }
+        mp->hit_count = mp->hit_count + 1;
+        modle_init2(mp);
+        } else {
+            mp->score = (mp->score >= MISS_PENALTY) ? (mp->score - MISS_PENALTY) : 0;
+            mp->miss_count = mp->miss_count + 1;}
+}
+
+void model_update(model_t *mp, command c){
+    switch (c) {
+        case WHACK0: adding(mp, 0);
+                    break;
+        case WHACK1: adding(mp, 1);
+                    break;
+        case WHACK2: adding(mp, 2);
+                    break;
+        case WHACK3: adding(mp, 3);
+                    break;
+        case NONE: break;
+     }
+    mp->timer = mp->timer - 1;
+    if(mp->timer == 0){
+        modle_init2(mp);
+        mp->miss_count = mp->miss_count + 1;
+        mp->score = (mp->score >= MISS_PENALTY) ? (mp->score - MISS_PENALTY) : 0;
+    }
+}
+
 uint16_t bcd_uint16(uint16_t num) {
     if (num > MAX_SCORE) {
         return 0xEEEE;
     }
-
     static uint8_t hundreds;
     hundreds = 0;
     while (num >= 100) {
         num = num - 100;
         hundreds = hundreds + 1;
     }
-
     return ((uint16_t)hundreds << 8) | bcd_uint8((uint8_t)num);
 }
 
@@ -182,7 +227,14 @@ void view_update(model_t *mp){
 
 // CONTROLLER
 command controller_read(void){
-    // fill in code here
+    uint8_t key = *KEYPAD;
+    switch (key) {
+        case B8(10000000): return WHACK0;
+        case B8(10000001): return WHACK1;
+        case B8(10000010): return WHACK2;
+        case B8(10000011): return WHACK3;
+        default: return NONE;
+    }
 }
 
 void nmi_handler(void) __critical __interrupt {
@@ -192,11 +244,7 @@ void nmi_handler(void) __critical __interrupt {
     static model_t m;
     static model_t *mp = &m;
     static command c;
-
-    if (busy) {
-        return; // we cannot afford to do a second interrupt
-    }
-
+    if (busy) { return; }// we cannot afford to do a second interrupt
     busy = true;
     *BUSY_LED = true;
     if (!initialized) {
